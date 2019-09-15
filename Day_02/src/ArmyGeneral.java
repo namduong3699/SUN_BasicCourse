@@ -24,10 +24,13 @@ public class ArmyGeneral extends Brawler{
 		return "AG";
 	}
 	
+	@Override
 	public void getInfo() {
 		System.out.println(this.getName() + " " + this.m_Code + " " + this.m_Attack + " " 
-				+ this.m_Defend + " " + this.m_Equipment + " " + this.m_Strength + " " + this.m_Experience); 
+				+ this.m_Defend + " " + ((this.m_Equipment) ? "YES" : "NO") + " " + this.m_Strength + " " + this.m_Experience); 
 	}
 	
-	
+	public double getM_Experience() {
+		return this.m_Experience;
+	}
 }

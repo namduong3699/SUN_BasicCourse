@@ -4,10 +4,11 @@ import java.util.Scanner;
 public class Team {
 	private String name;
 	private ArmyGeneral leader;
-	private ArrayList<Brawler> army = new ArrayList<>();
+	private ArrayList<Brawler> army;
 	
 	public Team() {
-		
+		leader = new ArmyGeneral();
+		army = new ArrayList<>();
 	}
 	
 	public Team(String name, ArmyGeneral armyGeneral, ArrayList<Brawler> army) {
@@ -17,9 +18,7 @@ public class Team {
 	}
 	
 	public void input(Scanner in) {
-//		try {
-//			Scanner in = new Scanner(file);
-//			System.out.println(file.getName());
+		try {
 			in.next();
 			this.setName(in.next());
 			int quantity = Integer.parseInt(in.next()); 
@@ -45,13 +44,9 @@ public class Team {
 					army.add(K);
 				}
 			}
-//		} catch (Exception e) {
-//			System.out.println("Team-input: " + e);
-//		}
-		//Nhập tên, số lượng
-		//for (số lượng) 
-//		army.add(new Brawler)
-//		army.get(i).input()
+		} catch (Exception e) {
+			System.out.println("Team-input: " + e);
+		}
 	}
 	
 	public void getInfo() {
@@ -67,15 +62,7 @@ public class Team {
 	}
 	
 	public Brawler getBrawler() {
-		return (army.size() > 0) ? army.get(army.size() - 1) : null;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		return (army.size() == 1) ? army.get(0) : army.get(1);
 	}
 
 	public void remove(Brawler brawler) {
@@ -84,5 +71,17 @@ public class Team {
 	
 	public void damage(Brawler brawler) {
 		army.get(army.indexOf(brawler)).damage();
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public double getLeaderExp() {
+		return this.leader.getM_Experience();
 	}
 }

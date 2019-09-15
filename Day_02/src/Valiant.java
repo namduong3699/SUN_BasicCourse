@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Valiant extends Brawler{
 	public Valiant() {
 		super();
@@ -6,6 +8,14 @@ public class Valiant extends Brawler{
 		super();
 		if(equipment) {
 			this.m_Defend = defend*2;
+		}
+	}
+	
+	@Override
+	public void input(Scanner in) {
+		super.input(in);
+		if(m_Equipment) {
+			this.m_Defend = m_Defend*2;
 		}
 	}
 	
