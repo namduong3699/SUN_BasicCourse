@@ -62,7 +62,7 @@ public class Team {
 		return leader;
 	}
 	
-	public ArrayList<Solider> getAlive() {
+	public ArrayList<Solider> getSoliderAlive() {
 		ArrayList<Solider> alive = new ArrayList<>();
 		if(!leader.isDead()) alive.add(leader);
 		for (Solider solider : army) {
@@ -71,9 +71,9 @@ public class Team {
 		return alive;
 	}
 	
-	public String getAliveString() {
+	public String getSoliderAliveString() {
 		String result = "";
-		for (Solider solider : getAlive()) {
+		for (Solider solider : getSoliderAlive()) {
 			if(!solider.isDead()) result += solider + "\n";
 		}
 		return result;

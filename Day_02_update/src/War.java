@@ -68,9 +68,9 @@ public class War {
 	
 	public String result() {
 		if(teamA.isLose()) {
-			return "Team " + teamB.getName() + " Win" + "\n" + teamB.getAliveString();
+			return "Team " + teamB.getName() + " Win" + "\n" + teamB.getSoliderAliveString();
 		} else if(teamB.isLose()) {
-			return "Team " + teamA.getName() + " Win" + "\n" + teamA.getAliveString();
+			return "Team " + teamA.getName() + " Win" + "\n" + teamA.getSoliderAliveString();
 		}
 		return "";
 	}
