@@ -1,0 +1,217 @@
+<html>
+<head>
+	<title>Sun_basic_day08_2</title>
+</head>
+
+<body>
+	<style>
+		* {
+			line-height: 1.5rem;
+		}
+		.wid10 { width: 10% }
+		.wid20 { width: 20% }
+		.wid30 { width: 30% }
+		.wid33 { width: 33% }
+		.wid70 { width: 70% }
+		.wid80 { width: 80% }
+		.wid100 { width: 100% }
+
+		.container {
+			width: 50%;
+			margin: 50px auto;
+		}
+
+		table, tr, td {
+			border: solid 1px black;
+		}
+		table {
+			width: 100%;
+		}
+		table tr td{
+			padding: 10px;
+		}
+		.input-row td:first-child {
+			width: 10%;
+		}
+		
+		input[type=text] {
+			width: 100%;
+		}
+		.skills tr td:first-child {
+			width: 10%;
+		}
+		.skills tr td select {
+			width: 100%;
+		}
+	</style>
+	<table class="container">
+		<form action="" method="GET">
+			<tr class="input-row">
+				<td>Name</td>
+				<td><input type="text" name="name" required="required"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input class="wid100" type="email" name="email" required="required"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>
+					<table>
+						<tr>
+							<td><input type="radio" name="gender" value="male" checked></td>
+							<td>Male</td>
+							<td><input type="radio" name="gender" value="female"></td>
+							<td>Female</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>Birthday</td>
+				<td><input id="birthday" type="date" name="birthday" onchange="getAge()" value="1999-01-01"></td>
+				<td class="wid30">
+					<table>
+						<tr>
+							<td>Age</td>
+							<td><input id="age" type="text" name="age" disabled=""></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>Language</td>
+				<td>
+					<select name="language">
+						<option value="0" selected>Tiếng Việt</option>
+						<option value="1">English</option>
+						<option value="2">日本語</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Skills</td>
+				<td>
+					<table class="skills">
+						<tr>
+							<td>
+								<input type="checkbox" name="java" onclick="expDisable(this)">
+							</td>
+							<td>
+								Java
+							</td>
+							<td>
+								<select name="java_exp" disabled="">
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								Year
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="php" onclick="expDisable(this)">
+							</td>
+							<td>
+								PHP
+							</td>
+							<td>
+								<select name="php_exp" disabled>
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								Year
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name=".net" onclick="expDisable(this)">
+							</td>
+							<td>
+								.NET
+							</td>
+							<td>
+								<select name=".net_exp" disabled>
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								Year
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="ruby" onclick="expDisable(this)">
+							</td>
+							<td>
+								Ruby
+							</td>
+							<td>
+								<select name="ruby_exp" disabled>
+									<option value="0" selected>0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</select>
+							</td>
+							<td>
+								Year
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>Avatar</td>
+				<td><input type="file" required="required"></td>
+			</tr>
+			<tr>
+				<td>Admin</td>
+				<td><input type="checkbox" name="admin"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="submit"></td>
+			</tr>
+		</form>
+	</table>
+
+	<script>
+		function getAge() {
+			var birthday = new Date(document.getElementById("birthday").value);
+			var current = new Date();
+			var age = document.getElementById("age");
+			age.value = parseInt((current - birthday)/(1000*60*60*24*365));
+		}
+
+		function expDisable(element) {
+			var elementName = element.getAttribute("name");
+			var disabledElement = document.getElementsByName(elementName + "_exp")[0];
+			if(element.checked) {
+				disabledElement.removeAttribute("disabled");
+			} else {
+				disabledElement.setAttribute("disabled", "");
+				disabledElement.getElementsByTagName('option')[0].selected = 'selected';
+			}
+		}
+
+		getAge();
+	</script>
+</body>
+</html>
